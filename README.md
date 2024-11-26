@@ -207,12 +207,48 @@ console.log(JSON.parse(userFromLS));
 
 ### **Vanliga användningsområden**
 
+1. **Spara användarinställningar**
+
+   - Temafärg (ljus/mörkt tema)
+   - Språkval (svenska/engelska eller annat språk)
+   - Visningspreferenser (listvy eller rutnätsvy)
+
+2. **Session- och använderdata**
+
+   - Exempelvis ett användarnamn eller annan information så länge det inte är känslig information.
+
+3. **Formulärvärden**
+
+   - Om en användare stänger och öppnar sidan igen kan deras ifyllda formmulärfält finnas kvar.
+
+4. **Enkel caching**
+
+   - Spara resultat från ett API-anrop som inte behöver anropas så ofta.
+
 ### **Säkerhet**
+
+localStorage är inte säkert för känslig data. Starka skäl att undvika lagring av känslig information som lösenord och tokens.
+
+- localStorage kan läsas av JavaScript från vilken som helst av sidans scripts, vilket innebär att det kan vara sårbart för XSS-attacker.
+
+- Ska man spara känslig data så kan det vara bra att kryptera eller hasha den på något sätt eller helt enkelt använda andra säkrare alternativ.
 
 ### **Begränsningar**
 
+- Begränsningar i storlek, de flesta webbläsare tillåter mellan 5-10 MB per domän
+
+- Endast strängar kan sparas. Alltså bör vi alltid spara det i JSON-format. För att konvertera till det och tillbaka igen så används JSON.stringify() och JSON.parse() för objekt.
+
+- Same-origin-policy: data är endast tillgängligt från samma domän och protokoll.
+
 ## Web API
+
+Web APIs är en samling funktioner och objekt som webbläsaren tillhandahåller för att utvecklare ska kunna interagera med webbsidan, webbläsaren och användarens enhet. Det är ett gränssnitt mellan din kod (JavaScript) och webbläsarens inbyggda funktioner. Den är en del av BOM helt enklet.
+
+Nedan har ni en länk till en lista som listar allt man kan göra i webben via JavaScript.
 
 [MDN Docs - Web API](https://developer.mozilla.org/en-US/docs/Web/API#specifications)
 
 ### Vad är relationen till BOM?
+
+Kort sagt, Web APIs är verktygslådan som låter dig styra webbläsaren och dess resureser.
